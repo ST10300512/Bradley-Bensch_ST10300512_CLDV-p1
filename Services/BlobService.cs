@@ -21,4 +21,5 @@ namespace ST10300512_CLDVPOE.Services
             await blobClient.UploadAsync(content, true);
         }
     }
+
 }

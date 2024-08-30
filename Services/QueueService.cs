@@ -19,4 +19,5 @@ namespace ST10300512_CLDVPOE.Services
             await queueClient.SendMessageAsync(message);
         }
     }
+
 }
