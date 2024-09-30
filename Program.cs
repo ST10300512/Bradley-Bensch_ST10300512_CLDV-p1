@@ -1,4 +1,5 @@
 
+using Microsoft.Azure.Functions.Worker;
 using ST10300512_CLDVPOE.Services;
 namespace SemesterTwo
 {
@@ -39,6 +40,17 @@ namespace SemesterTwo
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
+            var host = new HostBuilder()
+                .ConfigureFunctionsWebApplication()
+                .ConfigureServices(services =>
+                {
+                    services.AddApplicationInsightsTelemetryWorkerService();
+                    services.ConfigureFunctionsApplicationInsights();
+                })
+                .Build();
+
+            host.Run();
+
         }
     }
 }
